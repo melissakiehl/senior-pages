@@ -1,5 +1,8 @@
 # Sources and credits: Page 01
 
+> **Superseded (Nov 23, 2026):** every photo and video still of Melissa listed below has been removed from the pages. For the images that replace them, see `credits/melissa-images.md`.
+
+
 ## Facts about Melissa
 | Item on page | Source |
 |---|---|
@@ -9,7 +12,8 @@
 | REALTOR®, PSA, SRES® | Gmail signature |
 | Personal outreach, auction and cleanout coordination, unpacking help at the new home | Confirmed by Melissa (Nov 22, 2026): she coordinates all of these herself |
 | 5.0 rating, 101 Google reviews; review link reviewmk.com | Google reviews widget on melissakiehl.com (read Nov 22 and 23, 2026); signature "Leave a review! http://reviewmk.com/" |
-| Brand red #b40101, fonts, palette | `/workspace/brand/brand-voice-guide.docx`, `/workspace/buyer-guide/` |
+| Brand red #b40101 (now logo only), fonts | `/workspace/brand/brand-voice-guide.docx`, `/workspace/buyer-guide/` |
+| Page main color: Plum #5a2d72 (dark #3d1f4e, tint #f2eef4) | Melissa's decision (Nov 23, 2026): each page gets its own main color; brand red is used only in the logo lockup |
 | Headshot | `/workspace/newsletter-headshots/melissa.jpg` |
 | KW Legacy Partners logos | `/workspace/buyer-guide/assets/kwlp-logo-color.png`, `kwlp-logo-white.png` |
 

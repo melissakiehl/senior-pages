@@ -49,9 +49,9 @@ Formspree is a free service that emails you whatever someone types into the form
 1. Sign up at **https://formspree.io** with **mk@melissakiehl.com**, then click the link in the verification email.
 2. In the dashboard, click **+** and then **New Form**. Name it `LP 01 Downsizing`, send emails to `mk@melissakiehl.com`, and click **Create Form**.
 3. Open the **Integration** tab and copy the code after `/f/` in the endpoint, for example `xyzabcde`.
-4. Open `public/downsizing-realtor-connecticut/index.html` and go to **line 478**:
+4. Open `public/downsizing-realtor-connecticut/index.html` and go to **line 483**:
    `<form class="lead-form" id="lead-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>`
-   Replace only `YOUR_FORM_ID` with your code. Line 477 is a comment pointing to it. On GitHub, open the file, click the pencil icon, make the change and click **Commit changes**. Sevalla redeploys automatically.
+   Replace only `YOUR_FORM_ID` with your code. Line 482 is a comment pointing to it. On GitHub, open the file, click the pencil icon, make the change and click **Commit changes**. Sevalla redeploys automatically.
 5. Test it: submit the form on the live page. The green thank-you box should appear, and an email titled **"New note from the Downsizing Realtor CT page"** should arrive at mk@melissakiehl.com. The first time, Formspree may ask you to confirm by email.
 
 If you outgrow 50 a month, Web3Forms or Basin work the same way. Change the form `action` (Web3Forms also needs a hidden `access_key` field).
@@ -62,4 +62,4 @@ If you outgrow 50 a month, Web3Forms or Basin work the same way. Change the form
 3. In `public/downsizing-realtor-connecticut/index.html`, replace every `YOUR-DOMAIN.com` with the real domain (lines 21, 27, 28, 46, 47 and 48) and commit.
 
 ## Adding pages 02–10 later
-Copy `public/downsizing-realtor-connecticut/` to a new folder named for the search phrase, for example `public/estate-cleanout-services-connecticut/`. Edit the blocks marked `PAGE-SPECIFIC` and commit. Add a link to `public/index.html`. Once there are several pages, delete the line in `public/_redirects` so the root shows the page list instead of redirecting.
+Copy `public/downsizing-realtor-connecticut/` to a new folder named for the search phrase, for example `public/estate-cleanout-services-connecticut/`. Edit the blocks marked `PAGE-SPECIFIC`, give the page its own main color in the `:root` block (`--accent`, `--accent-dark`, `--accent-tint`; white text on `--accent` must stay at 4.5:1 or better) and commit. Keep `--logo-red` (#b40101) for the logo only. Add a link to `public/index.html`. Once there are several pages, delete the line in `public/_redirects` so the root shows the page list instead of redirecting.
