@@ -45,7 +45,7 @@ All review text is quoted word for word from Melissa’s Google Business Profile
 
 **Thomas B. scrape note:** The widget text was captured as “I ha Let me ve ever meet.” That “Let me” is a UI artifact inserted between the two halves of “have.” The pages use “I have ever meet,” keeping his typo “meet,” the missing space in “required repairs,Interest rates,” and “myDad’s.” Nothing else was edited.
 
-## Photos of Melissa (real photos only; no AI-edited scenes)
+## Photos of Melissa (earlier set, since replaced)
 
 | Page | File | Source | How it is used |
 |---|---|---|---|

@@ -60,7 +60,7 @@ Source for all: Melissa's Google Business Profile, "Melissa Kiehl, REALTOR®" (t
 | images/melissa.jpg | `/workspace/melissa-headshot-cutout.png` composited on a warm cream background | Melissa / KW | used with permission (on file) |
 | images/melissa-still.jpg | `/workspace/video-stills/selected/Melissa - YT Just Sold - smile.jpg` | Still from Melissa’s own video | used small, because the source is low-resolution |
 
-All Wikimedia images were cropped and resized. No AI-edited scenes, running imagery, or photos of Ken Huffine were used. Video stills marked “wide eyes” or “talking,” and casual office stills (tank top, feet on the desk), were not used.
+All Wikimedia images were cropped and resized. No running imagery or photos of Ken Huffine were used. Video stills marked “wide eyes” or “talking,” and casual office stills (tank top, feet on the desk), were not used.
 
 ## Fonts
 Playfair Display, Oswald and Arimo, copied from `public/downsizing-realtor-connecticut/fonts/`. SIL Open Font License / Apache 2.0 Google Fonts, subset to Latin.

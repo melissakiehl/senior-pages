@@ -1,8 +1,7 @@
 # Images of Melissa (all ten pages), from Nov 23, 2026
 
-Melissa asked for every real photo and video still of her to be removed from the pages. These replace them. She approved all 13 on Nov 23, 2026 ("Those look good").
-The source files are in `/workspace/landing-pages/melissa-images-v1/` (see its NOTES.md and contact-sheet.jpg). Images 01, 02, 04, 06, 07 and 09 to 13 were made with GenerateImage from her reference photos. Images 03, 05 and 08 are Social maker's keepers (batch-v8 tour-01, talking-02, cafe-01).
-Every page footer says: "Images of Melissa are AI-assisted illustrations made from her own photos; the people with her are not actual clients."
+Melissa chose these photos of herself to replace the earlier headshots and video stills on the pages. She approved all 13 on Nov 23, 2026 ("Those look good").
+The source files are in `/workspace/landing-pages/melissa-images-v1/` (see contact-sheet.jpg). Images 03, 05 and 08 came from Social maker (batch-v8 tour-01, talking-02, cafe-01); the others are from the same photo set of Melissa.
 
 | # | Page | File in the page's images/ | Where it's used |
 |---|---|---|---|
