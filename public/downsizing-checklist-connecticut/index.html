@@ -11,14 +11,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Downsizing Checklist for Connecticut | Melissa Kiehl, SRES® | KW Legacy Partners</title>
 <meta name="description" content="A practical, printable Connecticut downsizing checklist: the decision, sorting, donations, auction, cleanout, the sale and unpacking. Calm guidance from Melissa Kiehl, SRES®.">
-<!-- TODO: replace YOUR-DOMAIN.com with the live domain once it is chosen -->
-<link rel="canonical" href="https://YOUR-DOMAIN.com/downsizing-checklist-connecticut/">
+<!-- Live on GitHub Pages for now. If a custom domain is added later, replace https://melissakiehl.github.io/senior-pages/ with it. -->
+<link rel="canonical" href="https://melissakiehl.github.io/senior-pages/downsizing-checklist-connecticut/">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:title" content="A printable downsizing checklist for Connecticut families">
 <meta property="og:description" content="From the first conversation to the first night in the new place, with room-by-room sorting, donation, auction and unpacking help. Melissa Kiehl, SRES®, KW Legacy Partners.">
-<meta property="og:url" content="https://YOUR-DOMAIN.com/downsizing-checklist-connecticut/">
-<meta property="og:image" content="https://YOUR-DOMAIN.com/downsizing-checklist-connecticut/images/og-image.jpg">
+<meta property="og:url" content="https://melissakiehl.github.io/senior-pages/downsizing-checklist-connecticut/">
+<meta property="og:image" content="https://melissakiehl.github.io/senior-pages/downsizing-checklist-connecticut/images/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_US">
@@ -28,7 +28,7 @@
 <link rel="preload" href="fonts/arimo.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="images/hero-house.jpg" as="image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"RealEstateAgent","name":"Melissa Kiehl, REALTOR®, SRES® | KW Legacy Partners","description":"Downsizing checklist and move-concierge real estate services across Connecticut: planning, sorting, personally coordinated auction and cleanout, home sale and unpacking help at the new home.","url":"https://YOUR-DOMAIN.com/downsizing-checklist-connecticut/","image":"https://YOUR-DOMAIN.com/downsizing-checklist-connecticut/images/melissa-reviewing-checklist.jpg","logo":"https://YOUR-DOMAIN.com/downsizing-checklist-connecticut/images/kwlp-logo-black.png","telephone":"+1-860-480-4169","email":"mk@melissakiehl.com","address":{"@type":"PostalAddress","streetAddress":"29 S. Main Street, Suite 204","addressLocality":"West Hartford","addressRegion":"CT","postalCode":"06107","addressCountry":"US"},"areaServed":{"@type":"State","name":"Connecticut"},"parentOrganization":{"@type":"RealEstateAgent","name":"Keller Williams Legacy Partners"},"sameAs":["https://www.melissakiehl.com/"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"101","bestRating":"5"}}
+{"@context":"https://schema.org","@type":"RealEstateAgent","name":"Melissa Kiehl, REALTOR®, SRES® | KW Legacy Partners","description":"Downsizing checklist and move-concierge real estate services across Connecticut: planning, sorting, personally coordinated auction and cleanout, home sale and unpacking help at the new home.","url":"https://melissakiehl.github.io/senior-pages/downsizing-checklist-connecticut/","image":"https://melissakiehl.github.io/senior-pages/downsizing-checklist-connecticut/images/melissa-reviewing-checklist.jpg","logo":"https://melissakiehl.github.io/senior-pages/downsizing-checklist-connecticut/images/kwlp-logo-black.png","telephone":"+1-860-480-4169","email":"mk@melissakiehl.com","address":{"@type":"PostalAddress","streetAddress":"29 S. Main Street, Suite 204","addressLocality":"West Hartford","addressRegion":"CT","postalCode":"06107","addressCountry":"US"},"areaServed":{"@type":"State","name":"Connecticut"},"parentOrganization":{"@type":"RealEstateAgent","name":"Keller Williams Legacy Partners"},"sameAs":["https://www.melissakiehl.com/"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"101","bestRating":"5"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -538,6 +538,12 @@ section{padding:80px 0}
       status.className='form-status err';
       status.textContent='Please fill in your name, full mailing address and a few words about your situation.';
       return;
+    }
+    // Until a real Formspree ID is in the form action, don't send anything; point people to the phone instead.
+    if(form.action.indexOf('YOUR_FORM_ID')>-1){
+      status.className='form-status err';
+      status.innerHTML='Online notes are not switched on just yet. Please call me at <a href="tel:+18604804169">860.480.4169</a>. I would be glad to talk.';
+      status.focus(); return;
     }
     var btn=form.querySelector('button[type=submit]'); btn.disabled=true; btn.textContent='Sending…';
     fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})

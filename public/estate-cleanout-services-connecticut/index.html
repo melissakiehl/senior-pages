@@ -12,15 +12,15 @@
 
 <title>Estate Cleanout Services in Connecticut | Melissa Kiehl, SRES® | KW Legacy Partners</title>
 <meta name="description" content="Estate cleanout services in Connecticut, coordinated from the first walkthrough to unpacking at the new place: sorting, auction, junk removal, the sale and settling in. Guided by Melissa Kiehl, SRES®.">
-<!-- TODO: replace YOUR-DOMAIN.com with the live domain once it is chosen -->
-<link rel="canonical" href="https://YOUR-DOMAIN.com/estate-cleanout-services-connecticut/">
+<!-- Live on GitHub Pages for now. If a custom domain is added later, replace https://melissakiehl.github.io/senior-pages/ with it. -->
+<link rel="canonical" href="https://melissakiehl.github.io/senior-pages/estate-cleanout-services-connecticut/">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Estate cleanout services in Connecticut, coordinated so you don’t have to carry it all yourself.">
 <meta property="og:description" content="Sorting, auction, junk removal, the sale and unpacking — personally coordinated by Melissa Kiehl, SRES®, KW Legacy Partners.">
-<meta property="og:url" content="https://YOUR-DOMAIN.com/estate-cleanout-services-connecticut/">
-<meta property="og:image" content="https://YOUR-DOMAIN.com/estate-cleanout-services-connecticut/images/og-image.jpg">
+<meta property="og:url" content="https://melissakiehl.github.io/senior-pages/estate-cleanout-services-connecticut/">
+<meta property="og:image" content="https://melissakiehl.github.io/senior-pages/estate-cleanout-services-connecticut/images/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_US">
@@ -37,9 +37,9 @@
   "@type": "RealEstateAgent",
   "name": "Melissa Kiehl, REALTOR®, SRES® | KW Legacy Partners",
   "description": "Estate cleanout and careful-move real estate services across Connecticut: planning, sorting, personally coordinated auction and cleanout, home sale and unpacking help at the new home.",
-  "url": "https://YOUR-DOMAIN.com/estate-cleanout-services-connecticut/",
-  "image": "https://YOUR-DOMAIN.com/estate-cleanout-services-connecticut/images/melissa-sorting-with-family.jpg",
-  "logo": "https://YOUR-DOMAIN.com/estate-cleanout-services-connecticut/images/kwlp-logo-black.png",
+  "url": "https://melissakiehl.github.io/senior-pages/estate-cleanout-services-connecticut/",
+  "image": "https://melissakiehl.github.io/senior-pages/estate-cleanout-services-connecticut/images/melissa-sorting-with-family.jpg",
+  "logo": "https://melissakiehl.github.io/senior-pages/estate-cleanout-services-connecticut/images/kwlp-logo-black.png",
   "telephone": "+1-860-480-4169",
   "email": "mk@melissakiehl.com",
   "address": {
@@ -519,6 +519,12 @@ section{padding:84px 0}
       status.className='form-status err';
       status.textContent='Please fill in your name, full mailing address and a few words about your situation.';
       return;
+    }
+    // Until a real Formspree ID is in the form action, don't send anything; point people to the phone instead.
+    if(form.action.indexOf('YOUR_FORM_ID')>-1){
+      status.className='form-status err';
+      status.innerHTML='Online notes are not switched on just yet. Please call me at <a href="tel:+18604804169">860.480.4169</a>. I would be glad to talk.';
+      status.focus(); return;
     }
     var btn=form.querySelector('button[type=submit]'); btn.disabled=true; btn.textContent='Sending…';
     fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})

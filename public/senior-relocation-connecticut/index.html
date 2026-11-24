@@ -11,14 +11,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Senior Relocation in Connecticut | Melissa Kiehl, SRES® | KW Legacy Partners</title>
 <meta name="description" content="A Connecticut senior relocation plan that covers the whole move: the decision, the sorting, cleanout, auction, the sale and unpacking at the new place. Calm, honest help from Melissa Kiehl, SRES®.">
-<!-- TODO: replace YOUR-DOMAIN.com with the live domain once it is chosen -->
-<link rel="canonical" href="https://YOUR-DOMAIN.com/senior-relocation-connecticut/">
+<!-- Live on GitHub Pages for now. If a custom domain is added later, replace https://melissakiehl.github.io/senior-pages/ with it. -->
+<link rel="canonical" href="https://melissakiehl.github.io/senior-pages/senior-relocation-connecticut/">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Senior relocation in Connecticut, handled from both ends of the move">
 <meta property="og:description" content="Leaving one home and settling into the next, with the sorting, cleanout, sale and unpacking personally coordinated. Melissa Kiehl, SRES®, KW Legacy Partners.">
-<meta property="og:url" content="https://YOUR-DOMAIN.com/senior-relocation-connecticut/">
-<meta property="og:image" content="https://YOUR-DOMAIN.com/senior-relocation-connecticut/images/og-image.jpg">
+<meta property="og:url" content="https://melissakiehl.github.io/senior-pages/senior-relocation-connecticut/">
+<meta property="og:image" content="https://melissakiehl.github.io/senior-pages/senior-relocation-connecticut/images/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_US">
@@ -33,9 +33,9 @@
   "@type": "RealEstateAgent",
   "name": "Melissa Kiehl, REALTOR®, SRES® | KW Legacy Partners",
   "description": "Senior relocation and move-concierge real estate services across Connecticut: planning, sorting, personally coordinated auction and cleanout, home sale and unpacking help at the new home.",
-  "url": "https://YOUR-DOMAIN.com/senior-relocation-connecticut/",
-  "image": "https://YOUR-DOMAIN.com/senior-relocation-connecticut/images/melissa-settling-in-new-home.jpg",
-  "logo": "https://YOUR-DOMAIN.com/senior-relocation-connecticut/images/kwlp-logo-black.png",
+  "url": "https://melissakiehl.github.io/senior-pages/senior-relocation-connecticut/",
+  "image": "https://melissakiehl.github.io/senior-pages/senior-relocation-connecticut/images/melissa-settling-in-new-home.jpg",
+  "logo": "https://melissakiehl.github.io/senior-pages/senior-relocation-connecticut/images/kwlp-logo-black.png",
   "telephone": "+1-860-480-4169",
   "email": "mk@melissakiehl.com",
   "address": {
@@ -554,6 +554,12 @@ section{padding:88px 0}
       status.className='form-status err';
       status.textContent='Please fill in your name, full mailing address and a few words about your situation.';
       return;
+    }
+    // Until a real Formspree ID is in the form action, don't send anything; point people to the phone instead.
+    if(form.action.indexOf('YOUR_FORM_ID')>-1){
+      status.className='form-status err';
+      status.innerHTML='Online notes are not switched on just yet. Please call me at <a href="tel:+18604804169">860.480.4169</a>. I would be glad to talk.';
+      status.focus(); return;
     }
     var btn=form.querySelector('button[type=submit]'); btn.disabled=true; btn.textContent='Sending…';
     fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})

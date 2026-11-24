@@ -11,14 +11,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>What to Do With Stuff When Downsizing in Connecticut | Melissa Kiehl, SRES®</title>
 <meta name="description" content="A calm plan for what to do with a lifetime of things when downsizing in Connecticut: keep, family, donate, sell or haul away — plus cleanout, auction and unpacking help from Melissa Kiehl, SRES®.">
-<!-- TODO: replace YOUR-DOMAIN.com with the live domain once it is chosen -->
-<link rel="canonical" href="https://YOUR-DOMAIN.com/what-to-do-with-stuff-when-downsizing-connecticut/">
+<!-- Live on GitHub Pages for now. If a custom domain is added later, replace https://melissakiehl.github.io/senior-pages/ with it. -->
+<link rel="canonical" href="https://melissakiehl.github.io/senior-pages/what-to-do-with-stuff-when-downsizing-connecticut/">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:title" content="What to do with the stuff when you downsize in Connecticut">
 <meta property="og:description" content="Five clear destinations for a house full of things, with personally coordinated auction, cleanout and unpacking help. Melissa Kiehl, SRES®, KW Legacy Partners.">
-<meta property="og:url" content="https://YOUR-DOMAIN.com/what-to-do-with-stuff-when-downsizing-connecticut/">
-<meta property="og:image" content="https://YOUR-DOMAIN.com/what-to-do-with-stuff-when-downsizing-connecticut/images/og-image.jpg">
+<meta property="og:url" content="https://melissakiehl.github.io/senior-pages/what-to-do-with-stuff-when-downsizing-connecticut/">
+<meta property="og:image" content="https://melissakiehl.github.io/senior-pages/what-to-do-with-stuff-when-downsizing-connecticut/images/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_US">
@@ -28,7 +28,7 @@
 <link rel="preload" href="fonts/arimo.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="images/hero-boxes.jpg" as="image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"RealEstateAgent","name":"Melissa Kiehl, REALTOR®, SRES® | KW Legacy Partners","description":"Help deciding what to do with belongings when downsizing in Connecticut, including personally coordinated auction, cleanout, home sale and unpacking help at the new home.","url":"https://YOUR-DOMAIN.com/what-to-do-with-stuff-when-downsizing-connecticut/","image":"https://YOUR-DOMAIN.com/what-to-do-with-stuff-when-downsizing-connecticut/images/melissa-sorting-keepsakes.jpg","logo":"https://YOUR-DOMAIN.com/what-to-do-with-stuff-when-downsizing-connecticut/images/kwlp-logo-black.png","telephone":"+1-860-480-4169","email":"mk@melissakiehl.com","address":{"@type":"PostalAddress","streetAddress":"29 S. Main Street, Suite 204","addressLocality":"West Hartford","addressRegion":"CT","postalCode":"06107","addressCountry":"US"},"areaServed":{"@type":"State","name":"Connecticut"},"parentOrganization":{"@type":"RealEstateAgent","name":"Keller Williams Legacy Partners"},"sameAs":["https://www.melissakiehl.com/"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"101","bestRating":"5"}}
+{"@context":"https://schema.org","@type":"RealEstateAgent","name":"Melissa Kiehl, REALTOR®, SRES® | KW Legacy Partners","description":"Help deciding what to do with belongings when downsizing in Connecticut, including personally coordinated auction, cleanout, home sale and unpacking help at the new home.","url":"https://melissakiehl.github.io/senior-pages/what-to-do-with-stuff-when-downsizing-connecticut/","image":"https://melissakiehl.github.io/senior-pages/what-to-do-with-stuff-when-downsizing-connecticut/images/melissa-sorting-keepsakes.jpg","logo":"https://melissakiehl.github.io/senior-pages/what-to-do-with-stuff-when-downsizing-connecticut/images/kwlp-logo-black.png","telephone":"+1-860-480-4169","email":"mk@melissakiehl.com","address":{"@type":"PostalAddress","streetAddress":"29 S. Main Street, Suite 204","addressLocality":"West Hartford","addressRegion":"CT","postalCode":"06107","addressCountry":"US"},"areaServed":{"@type":"State","name":"Connecticut"},"parentOrganization":{"@type":"RealEstateAgent","name":"Keller Williams Legacy Partners"},"sameAs":["https://www.melissakiehl.com/"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"101","bestRating":"5"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -447,6 +447,12 @@ section{padding:84px 0}
       status.className='form-status err';
       status.textContent='Please fill in your name, full mailing address and a few words about your situation.';
       return;
+    }
+    // Until a real Formspree ID is in the form action, don't send anything; point people to the phone instead.
+    if(form.action.indexOf('YOUR_FORM_ID')>-1){
+      status.className='form-status err';
+      status.innerHTML='Online notes are not switched on just yet. Please call me at <a href="tel:+18604804169">860.480.4169</a>. I would be glad to talk.';
+      status.focus(); return;
     }
     var btn=form.querySelector('button[type=submit]'); btn.disabled=true; btn.textContent='Sending…';
     fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})

@@ -1,9 +1,7 @@
-# Melissa Kiehl landing pages
+# Melissa Kiehl senior landing pages
 
-Static landing pages for Kinsta Static Site Hosting (managed in Sevalla). Plain HTML, CSS and JS, with no build step.
+Ten static landing pages (plain HTML, CSS and JS, no build step), published on GitHub Pages at https://melissakiehl.github.io/senior-pages/.
 
-- `public/` is the **publish directory**. Only files in here go live.
-- `public/downsizing-realtor-connecticut/` is page 01, live at `/downsizing-realtor-connecticut/`.
-- `public/index.html` is the root page. `public/_redirects` sends `/` to page 01 for now.
-- `public/404.html` is the "not found" page.
-- `SETUP.md` covers the deploy and form steps. `CREDITS.md` lists sources, reviews and photo licenses. Neither is published.
+- `public/` is what goes live. `deploy-pages.sh` copies it to the `gh-pages` branch, which GitHub Pages serves.
+- `public/index.html` lists the ten pages. `public/404.html` is the "not found" page.
+- `SETUP.md` covers publishing, the form and a custom domain. `CREDITS.md` and `credits/` list sources, reviews and photo credits.
