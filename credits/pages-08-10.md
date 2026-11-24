@@ -17,7 +17,7 @@ Built November 23, 2026. Facts, form pattern, fonts, NAP and review-handling fol
 | Reverse Lending Partners; in-home caregivers; senior placement | Same honesty section as page 01 |
 | Brand red #b40101, fonts (Playfair Display, Oswald, Arimo) | Brand guide / buyer-guide fonts, copied into each page folder |
 | KW Legacy Partners logos | Same assets as page 01 |
-| Formspree `YOUR_FORM_ID` and canonical `YOUR-DOMAIN.com` placeholders | Same pattern as page 01; not yet filled |
+| Form endpoint (`public/lead-endpoint.js`) and GitHub Pages canonical URLs | Same pattern as page 01 |
 
 ## Reviews (verbatim Google reviews)
 Source for all: Melissa's Google Business Profile, "Melissa Kiehl, REALTOR®" (the profile that https://reviewmk.com/ opens), copied from the Elfsight Google-reviews widget on https://www.melissakiehl.com/ (loaded Nov 22–23, 2026). Text is quoted word for word. Review sets are rotated so these pages do not all repeat page 01's four.

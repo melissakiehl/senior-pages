@@ -447,10 +447,9 @@ section{padding:84px 0}
       <p>Prefer to talk now? Call <a href="tel:+18604804169"><strong>860.480.4169</strong></a>.</p>
     </div>
 
-    <!-- FORMSPREE: on the next line, replace only YOUR_FORM_ID with your form code (the part after /f/ in your Formspree endpoint). -->
-    <form class="lead-form" id="lead-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
-      <input type="hidden" name="subject" value="New note from the Aging in Place CT page">
-      <input type="hidden" name="_subject" value="New note from the Aging in Place CT page">
+    <form class="lead-form" id="lead-form" action="#" method="POST" novalidate>
+      <input type="hidden" name="page_name" value="Aging in Place CT">
+      <input type="hidden" name="page_url" value="">
       <input type="hidden" name="page" value="06 - aging in place Connecticut">
       <div class="hp" aria-hidden="true">
         <label for="hp-field">Leave this field empty</label>
@@ -534,10 +533,14 @@ section{padding:84px 0}
   </div>
 </footer>
 
+<script src="../lead-endpoint.js"></script>
 <script>
 (function(){
   var form=document.getElementById('lead-form'), status=document.getElementById('form-status');
   if(!form||!window.fetch||!window.FormData) return;
+  var endpoint=(window.LEAD_ENDPOINT||'').trim();
+  if(endpoint){ form.action=endpoint; }
+  var pu=form.querySelector('input[name=page_url]'); if(pu){ pu.value=location.href.split('#')[0]; }
   form.addEventListener('submit',function(e){
     e.preventDefault();
     status.className='form-status'; status.textContent='';
@@ -547,15 +550,15 @@ section{padding:84px 0}
       status.textContent='Please fill in your name, full mailing address and a few words about your situation.';
       return;
     }
-    // Until a real Formspree ID is in the form action, don't send anything; point people to the phone instead.
-    if(form.action.indexOf('YOUR_FORM_ID')>-1){
+    // Only if the web app address is missing: don't send anything; point people to the phone instead.
+    if(!endpoint){
       status.className='form-status err';
       status.innerHTML='Online notes are not switched on just yet. Please call me at <a href="tel:+18604804169">860.480.4169</a>. I would be glad to talk.';
       status.focus(); return;
     }
     var btn=form.querySelector('button[type=submit]'); btn.disabled=true; btn.textContent='Sending…';
-    fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
-      .then(function(r){ if(!r.ok) throw new Error('bad'); return r.json(); })
+    // Apps Script web apps don't send CORS headers, so post in no-cors mode; the reply is opaque and a resolved fetch means it was delivered.
+    fetch(endpoint,{method:'POST',mode:'no-cors',body:new URLSearchParams(new FormData(form))})
       .then(function(){
         form.querySelectorAll('.field,.row-3,button,.privacy').forEach(function(el){el.style.display='none';});
         status.className='form-status ok';

@@ -83,4 +83,4 @@ Playfair Display, Oswald and Arimo, copied from page 01. SIL Open Font License /
 
 ## Form and domain placeholders
 
-Each form still posts to `https://formspree.io/f/YOUR_FORM_ID`, matching page 01. Canonical and Open Graph URLs still use `YOUR-DOMAIN.com`. Neither has been chosen yet.
+Each form posts to the Google Apps Script web app named in `public/lead-endpoint.js`, like page 01. Canonical and Open Graph URLs use `https://melissakiehl.github.io/senior-pages/<slug>/`.

@@ -20,18 +20,20 @@ melissa-landing-pages/                 <- repo melissakiehl/senior-pages, branch
 
 All page links are relative, so the site works under the `/senior-pages/` subpath. Canonical, og:url, og:image and JSON-LD URLs use `https://melissakiehl.github.io/senior-pages/<slug>/`.
 
-## 2. Turn on the form (Formspree)
-Formspree is a free service that emails you whatever someone types into the form. You don't need a server. The free plan allows 50 submissions a month.
-1. Sign up at **https://formspree.io** with **mk@melissakiehl.com**, then click the link in the verification email.
-2. In the dashboard, click **+** and then **New Form**. Name it, for example, `Landing pages`, send emails to `mk@melissakiehl.com`, and click **Create Form**.
-3. Open the **Integration** tab and copy the code after `/f/` in the endpoint, for example `xyzabcde`.
-4. Open `public/downsizing-realtor-connecticut/index.html` and go to **line 483**:
-   `<form class="lead-form" id="lead-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>`
-   Replace only `YOUR_FORM_ID` with your code. Line 482 is a comment pointing to it. Commit it on `main`, then run `./deploy-pages.sh` (or ask the Landing Pages bot to do it). Each of the ten pages has its own form line, so repeat this for every page with its own form, or use one Formspree form for all of them.
-   Until a real ID is in place, submitting a form sends nothing: the page shows a short note asking people to call 860.480.4169 instead.
-5. Test it: submit the form on the live page. The green thank-you box should appear, and an email titled **"New note from the Downsizing Realtor CT page"** should arrive at mk@melissakiehl.com. The first time, Formspree may ask you to confirm by email.
+## 2. The form: Google Sheet + email (Google Apps Script)
+Every form on the ten pages posts to one free Google Apps Script web app that runs in your own Google account. No other service, account or card is needed. Each note:
+- adds a row to the Google Sheet **Landing Page Leads**, tab **Leads** (Timestamp, Page, Name, Street address, Town or city, State, ZIP, Situation answer, Page URL): https://docs.google.com/spreadsheets/d/1zmZChDzrVOAmM_4bScBprxydr_F2H_4X0UHOMLJKGIk/edit
+- emails **mk@melissakiehl.com** with the subject **LEAD: Landing page - <page name>**, then labels that email **LEAD**, stars it and marks it important. The script does the labelling itself because Gmail filters can't be created from the connector.
 
-If you outgrow 50 a month, Web3Forms or Basin work the same way. Change the form `action` (Web3Forms also needs a hidden `access_key` field).
+The script's code is in `apps-script/Code.gs`. One-time setup in the browser, signed in as mk@melissakiehl.com:
+1. Open the sheet, then go to **Extensions > Apps Script**. Delete what's in `Code.gs`, paste in all of `apps-script/Code.gs`, and click Save.
+2. Choose `testSetup` in the function menu and click **Run**. Google will ask for permission (Sheets and Gmail). Click **Review permissions**, choose your account, then **Advanced > Go to project (unsafe)** if it shows, then **Allow**. This is your own script, so the warning is expected.
+3. Click **Deploy > New deployment**, click the gear, and choose **Web app**. Set **Execute as: Me** and **Who has access: Anyone**. Click **Deploy** and copy the **Web app URL** (it ends in `/exec`).
+4. Paste that URL between the quotes in `public/lead-endpoint.js`, commit it on `main` and run `./deploy-pages.sh` (or ask the Landing Pages bot to do it). All ten pages read that one file.
+
+Until a URL is in `lead-endpoint.js`, submitting a form sends nothing: the page shows a short note asking people to call 860.480.4169 instead.
+
+If you edit the script later, use **Deploy > Manage deployments > Edit (pencil) > Version: New version > Deploy** so the URL stays the same. Apps Script's free limits (about 100 emails a day on a regular Gmail account, 1,500 on Google Workspace) are far above what these pages need.
 
 ## 3. Your own domain (later)
 1. In **Settings → Pages → Custom domain**, enter the domain (for example `homes.melissakiehl.com`), save, and tick **Enforce HTTPS** once it's offered.
