@@ -42,7 +42,8 @@ function doPost(e) {
   lock.waitLock(20000);
   try {
     var sh = sheet_();
-    sh.appendRow([new Date(), page, name, street, city, state, zip, answer, pageUrl]);
+    // Leading apostrophe keeps ZIPs like 06103 as text (otherwise Sheets drops the 0).
+    sh.appendRow([new Date(), page, name, street, city, state, zip ? "'" + zip.replace(/^'/, '') : '', answer, pageUrl]);
   } finally {
     lock.releaseLock();
   }
@@ -67,6 +68,8 @@ function doGet() {
 
 function sheet_() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
+  // Show timestamps in Connecticut time (a sheet made through the API starts on GMT).
+  if (ss.getSpreadsheetTimeZone() !== 'America/New_York') ss.setSpreadsheetTimeZone('America/New_York');
   var sh = ss.getSheetByName(SHEET_NAME) || ss.insertSheet(SHEET_NAME);
   if (sh.getLastRow() === 0) sh.appendRow(HEADERS);
   return sh;
