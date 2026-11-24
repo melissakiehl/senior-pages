@@ -2,4 +2,4 @@
 // (adds a row to the "Landing Page Leads" sheet and emails mk@melissakiehl.com).
 // Paste the web app URL (ends in /exec) between the quotes. Leave it empty and the forms
 // show a "please call me" note instead of sending.
-window.LEAD_ENDPOINT = '';
+window.LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwfDf5mnuj9GahcuWU5-lmJCVyHU2wI5NRlDAV_fDT5SRkSNUJ2Bnk1sfyY9Q3mWs4tUw/exec';
