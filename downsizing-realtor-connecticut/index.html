@@ -555,15 +555,76 @@ section{padding:88px 0}
 </footer>
 
 <!-- Form handler: sends the note to the Google Apps Script web app named in ../lead-endpoint.js
-     (adds a row to the "Landing Page Leads" sheet and emails Melissa). The visitor stays on the page. -->
+     (adds a row to the "Landing Page Leads" sheet and emails Melissa). On a successful send, the
+     visitor is taken to ./thank-you/, with any UTM / click IDs kept on that URL. -->
 <script src="../lead-endpoint.js"></script>
 <script>
 (function(){
+  var TRACK_KEYS=['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','fbclid'];
+  var STORE_KEY='lp_tracking_downsizing_realtor_ct';
+
+  function captureTracking(){
+    var found={}, has=false, i, k, v, params;
+    try{ params=new URLSearchParams(window.location.search); }catch(err){ params=null; }
+    if(params){
+      for(i=0;i<TRACK_KEYS.length;i++){
+        k=TRACK_KEYS[i]; v=params.get(k);
+        if(v){ found[k]=v; has=true; }
+      }
+    }
+    if(has){
+      try{ sessionStorage.setItem(STORE_KEY, JSON.stringify(found)); }catch(err){}
+      return found;
+    }
+    try{
+      var raw=sessionStorage.getItem(STORE_KEY);
+      if(raw){
+        var parsed=JSON.parse(raw);
+        if(parsed && typeof parsed==='object') return parsed;
+      }
+    }catch(err){}
+    return {};
+  }
+
+  function mergeTracking(url, tracking){
+    var u, i, k;
+    try{ u=new URL(url, window.location.href); }catch(err){ return url; }
+    for(i=0;i<TRACK_KEYS.length;i++){
+      k=TRACK_KEYS[i];
+      if(tracking[k] && !u.searchParams.get(k)) u.searchParams.set(k, tracking[k]);
+    }
+    return u.href;
+  }
+
+  function thankYouUrl(tracking){
+    var dest=new URL('./thank-you/', window.location.href);
+    var i, k;
+    for(i=0;i<TRACK_KEYS.length;i++){
+      k=TRACK_KEYS[i];
+      if(tracking[k]) dest.searchParams.set(k, tracking[k]);
+    }
+    return dest.href;
+  }
+
+  var tracking=captureTracking();
   var form=document.getElementById('lead-form'), status=document.getElementById('form-status');
   if(!form||!window.fetch||!window.FormData) return;
   var endpoint=(window.LEAD_ENDPOINT||'').trim();
   if(endpoint){ form.action=endpoint; }
-  var pu=form.querySelector('input[name=page_url]'); if(pu){ pu.value=location.href.split('#')[0]; }
+  var pu=form.querySelector('input[name=page_url]');
+  if(pu){ pu.value=mergeTracking(location.href.split('#')[0], tracking); }
+  // Post tracking fields too, in case the sheet later gains columns for them.
+  TRACK_KEYS.forEach(function(k){
+    if(!tracking[k]) return;
+    var inp=form.querySelector('input[name="'+k+'"]');
+    if(!inp){
+      inp=document.createElement('input');
+      inp.type='hidden';
+      inp.name=k;
+      form.appendChild(inp);
+    }
+    inp.value=tracking[k];
+  });
   form.addEventListener('submit',function(e){
     e.preventDefault();
     status.className='form-status'; status.textContent='';
@@ -586,7 +647,7 @@ section{padding:88px 0}
         form.querySelectorAll('.field,.row-3,button,.privacy').forEach(function(el){el.style.display='none';});
         status.className='form-status ok';
         status.innerHTML='<strong>Thank you. Your note is on its way to me.</strong><br>I read every one myself and will be in touch soon. — Melissa';
-        status.focus();
+        window.location.assign(thankYouUrl(tracking));
       })
       .catch(function(){
         btn.disabled=false; btn.textContent='Send my note to Melissa';
