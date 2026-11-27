@@ -4,8 +4,9 @@
 <!--
   MELISSA KIEHL LANDING PAGE SERIES: PAGE 04
   Target phrase: "estate cleanout services Connecticut"
-  Layout: magazine-style photo-card hero, walnut supporting accent, timeline first.
-  Intentionally unlike pages 01, 02 and 03.
+  Look: full-bleed photo hero of a West Hartford colonial, walnut overlay,
+  large serif headline, NAR/GHAR trust row. Timeline first below the hero.
+  Distinct from the other elevated heroes. Supporting accent: walnut #6b4423.
 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,7 +30,7 @@
 
 <link rel="preload" href="fonts/playfair.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="fonts/arimo.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="images/hero-boxes.jpg" as="image">
+<link rel="preload" href="images/ct-house.jpg" as="image">
 
 <script type="application/ld+json">
 {
@@ -140,15 +141,30 @@ section{padding:84px 0}
 .head-call a{font-weight:700;color:var(--accent);text-decoration:none;white-space:nowrap}
 
 /* MAGAZINE PHOTO-CARD HERO */
-.hero{padding:48px 0 32px;background:var(--paper)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,0.92fr) minmax(0,1.08fr);gap:48px 56px;align-items:start}
-.hero-copy{padding-top:12px;border-left:6px solid var(--walnut);padding-left:28px}
-.photo-card{background:#fff;padding:18px 18px 64px;box-shadow:0 24px 48px rgba(61,39,20,.16), 0 0 0 1px var(--line);position:relative;transform:rotate(-1.1deg);margin-top:24px}
-.photo-card img{width:100%;aspect-ratio:4/5;object-fit:cover}
-.photo-card .caption{position:absolute;left:28px;right:28px;bottom:16px;background:var(--walnut);color:#fff;font-family:var(--label);letter-spacing:.08em;text-transform:uppercase;font-size:14px;padding:12px 16px}
-.badge{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-size:18px;color:var(--muted);text-decoration:none}
+/* FULL-BLEED PHOTO HERO */
+.hero{position:relative;isolation:isolate;min-height:min(calc(100vh - 84px),820px);display:flex;align-items:flex-end;padding:0;color:#fff;background:#492e18;overflow:hidden;text-align:left}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 58%;display:block}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(73,46,24,.22) 0%,rgba(73,46,24,.42) 40%,rgba(73,46,24,.84) 100%)}
+.hero .wrap{position:relative;z-index:2;width:100%;padding:80px 24px 64px;text-align:left;display:block}
+.hero h1{color:#fff;font-size:clamp(40px,5.6vw,68px);line-height:1.12;font-weight:600;letter-spacing:-.02em;max-width:15em;margin:0 0 24px;text-wrap:balance}
+.hero h1 em{color:#fff;font-style:italic;font-weight:500}
+.hero .rule{background:#fff;margin:0 0 26px;width:48px;height:2px;opacity:.9}
+.hero .lead{color:rgba(255,255,255,.92);font-size:clamp(20px,2.05vw,24px);line-height:1.55;max-width:32em;margin:0}
+.hero .cta-row{justify-content:flex-start;margin-top:32px;gap:16px}
+.hero .btn-solid{background:#fff;color:var(--walnut-deep);border-color:#fff}
+.hero .btn-solid:hover{background:transparent;color:#fff;border-color:#fff}
+.hero .btn-ghost-light{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.75)}
+.hero .btn-ghost-light:hover{background:rgba(255,255,255,.14);color:#fff;border-color:#fff}
+.hero-trust{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:36px}
+.badge{display:inline-flex;align-items:center;gap:10px;margin:0;font-size:18px;color:var(--muted);text-decoration:none}
+.hero .badge{color:rgba(255,255,255,.92)}
+.hero .badge .stars{color:#fff;letter-spacing:2px;font-size:20px}
+.hero .badge strong{color:#fff}
 .badge .stars{color:var(--accent);letter-spacing:2px;font-size:20px}
 .badge strong{color:var(--ink)}
+.hero-creds{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.hero .hero-creds li{font-family:var(--label);letter-spacing:.12em;font-size:13px;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.65);background:transparent;border-radius:999px;padding:7px 13px}
 
 /* Timeline as a work plan — single column cards with walnut index */
 .plan{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:18px}
@@ -229,17 +245,16 @@ section{padding:84px 0}
 .credits a{color:#e8d4c4}
 
 @media (max-width:980px){
-  .hero-grid,.coord-grid,.about-grid,.form-grid,.foot-grid,.reviews,.faq-grid,.plan,.why-row{grid-template-columns:1fr}
+  .coord-grid,.about-grid,.form-grid,.foot-grid,.reviews,.faq-grid,.plan,.why-row{grid-template-columns:1fr}
   .why-item{border-right:0;border-bottom:1px solid var(--line)}
   .why-item:last-child{border-bottom:0}
   .option{grid-template-columns:1fr;gap:4px}
-  .photo-card{transform:none;margin-top:0}
-  .hero-copy{border-left:0;padding-left:0;border-top:6px solid var(--walnut);padding-top:22px}
+  .hero{min-height:min(calc(100vh - 84px),700px)}
+  .hero .wrap{padding:56px 24px 48px}
 }
 @media (max-width:640px){
   body{font-size:19px}
   section{padding:60px 0}
-  .hero{padding:32px 0 16px}
   .lead{font-size:21px}
   .head-call{width:100%}
   .brand img{height:38px}
@@ -248,6 +263,15 @@ section{padding:84px 0}
   .row-3{grid-template-columns:1fr 1fr;gap:0 14px}
   .row-3 .field:first-child{grid-column:1 / -1}
   .coord-grid img{box-shadow:10px 10px 0 var(--cream-2)}
+  .hero{min-height:0}
+  .hero .wrap{padding:28px 24px 22px}
+  .hero h1{font-size:clamp(32px,8.6vw,42px);margin-bottom:12px}
+  .hero .lead{font-size:19px;line-height:1.45}
+  .hero .cta-row{flex-direction:column;align-items:flex-start;margin-top:20px;gap:10px}
+  .hero .cta-row .btn{width:auto;max-width:100%;min-height:52px;padding:14px 22px;font-size:18px}
+  .hero-trust{margin-top:18px;gap:8px 10px}
+  .hero .hero-creds{gap:6px}
+  .hero .hero-creds li{font-size:12px;padding:5px 9px}
 }
 @media print{.site-head,.lead-form{display:none}}
 .form-status a{color:inherit;font-weight:700}
@@ -271,25 +295,27 @@ section{padding:84px 0}
 
 <main id="main">
 
-<section class="hero" id="top">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <h1><em>Estate cleanout services</em> in Connecticut, coordinated so you don’t have to carry it all yourself.</h1>
-      <hr class="rule">
-      <p class="lead">A house that’s been lived in for decades holds more than furniture. There’s what should stay with family, what can go to auction, what can be donated, and what simply needs to be cleared so the next chapter can start. I coordinate all of it, personally.</p>
-      <div class="cta-row">
-        <a class="btn btn-solid" href="#talk">Tell me about the house</a>
-        <a class="btn btn-ghost" href="#how">See the plan</a>
-      </div>
+<section class="hero" id="top" aria-labelledby="hero-h">
+  <div class="hero-bg">
+    <img src="images/ct-house.jpg" width="2000" height="1100" alt="A white colonial house with a red door and a deep front lawn, shaded by large trees, in West Hartford, Connecticut" fetchpriority="high">
+  </div>
+  <div class="wrap">
+    <h1 id="hero-h"><em>Estate cleanout services</em> in Connecticut, coordinated so you don’t have to carry it all yourself.</h1>
+    <hr class="rule">
+    <p class="lead">A house that’s been lived in for decades holds more than furniture. There’s what should stay with family, what can go to auction, what can be donated, and what simply needs to be cleared so the next chapter can start. I coordinate all of it, personally.</p>
+    <div class="cta-row">
+      <a class="btn btn-solid" href="#talk">Tell me about the house</a>
+      <a class="btn btn-ghost-light" href="#how">See the plan</a>
+    </div>
+    <div class="hero-trust">
       <a class="badge" href="https://reviewmk.com/" target="_blank" rel="noopener">
         <span class="stars" aria-hidden="true">★★★★★</span>
         <span><strong>5.0</strong> from 101 Google reviews</span>
       </a>
+      <ul class="creds hero-creds" aria-label="Designations">
+        <li>REALTOR®</li><li>SRES®</li><li>PSA</li><li aria-label="National Association of REALTORS®" title="National Association of REALTORS®">NAR</li><li aria-label="Greater Hartford Association of REALTORS®" title="Greater Hartford Association of REALTORS®">GHAR</li>
+      </ul>
     </div>
-    <figure class="photo-card">
-      <img src="images/hero-boxes.jpg" width="1440" height="1800" alt="Stacked cardboard moving boxes in a living room, ready to be packed or carried out" fetchpriority="high">
-      <figcaption class="caption">Sorting, auction, cleanout — coordinated for you</figcaption>
-    </figure>
   </div>
 </section>
 
