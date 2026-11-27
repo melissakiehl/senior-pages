@@ -433,10 +433,10 @@ section{padding:84px 0}
 <section class="form-band" id="talk" aria-labelledby="talk-h">
   <div class="wrap">
     <p class="eyebrow">When you’re ready</p>
-    <h2 id="talk-h">If you’re looking for the right person, <em>start with a note</em>.</h2>
+    <h2 id="talk-h">If you’re looking for the right person, <em>request the guide</em>.</h2>
     <hr class="rule">
     <p class="lead">There’s no rush and nothing to sign. Tell me a little about where things stand, and I’ll reach out myself.</p>
-    <p style="color:var(--muted);max-width:36em;margin:0 auto 0">I ask for a mailing address rather than an email, because I’d rather send you something of value versus adding you to a list. Prefer to talk now? Call <a href="tel:+18604804169"><strong>860.480.4169</strong></a>.</p>
+    <p style="color:var(--muted);max-width:36em;margin:0 auto 0">I ask for a mailing address rather than an email, so I can mail you the free Connecticut downsizing guide and a personal note — I’d rather send you something of value versus adding you to a list. Prefer to talk now? Call <a href="tel:+18604804169"><strong>860.480.4169</strong></a>.</p>
 
     <form class="lead-form" id="lead-form" action="#" method="POST" novalidate>
       <input type="hidden" name="page_name" value="Best Realtor CT">
@@ -474,9 +474,9 @@ section{padding:84px 0}
         </label>
         <textarea id="f-q" name="situation" required></textarea>
       </div>
-      <button class="btn btn-solid" type="submit">Send my note to Melissa</button>
+      <button class="btn btn-solid" type="submit">Request the guide</button>
       <div class="form-status" id="form-status" role="status" aria-live="polite" tabindex="-1"></div>
-      <p class="privacy">Your note goes only to Melissa. Your address is never sold, shared or added to a mailing list.</p>
+      <p class="privacy">Your request goes only to Melissa. I’ll mail your guide and a personal note to this address. It is never sold, shared or added to a mailing list.</p>
     </form>
   </div>
 </section>
@@ -529,7 +529,7 @@ section{padding:84px 0}
     // Only if the web app address is missing: don't send anything; point people to the phone instead.
     if(!endpoint){
       status.className='form-status err';
-      status.innerHTML='Online notes are not switched on just yet. Please call me at <a href="tel:+18604804169">860.480.4169</a>. I would be glad to talk.';
+      status.innerHTML='Online requests are not switched on just yet. Please call me at <a href="tel:+18604804169">860.480.4169</a>. I would be glad to talk.';
       status.focus(); return;
     }
     var btn=form.querySelector('button[type=submit]'); btn.disabled=true; btn.textContent='Sending…';
@@ -538,13 +538,13 @@ section{padding:84px 0}
       .then(function(){
         form.querySelectorAll('.field,.row-3,button,.privacy').forEach(function(el){el.style.display='none';});
         status.className='form-status ok';
-        status.innerHTML='<strong>Thank you. Your note is on its way to me.</strong><br>I read every one myself and will be in touch soon. — Melissa';
+        status.innerHTML='<strong>Thank you. I’ll mail your guide and a personal note to the address you shared.</strong><br>I read every request myself and will be in touch soon. — Melissa';
         status.focus();
       })
       .catch(function(){
-        btn.disabled=false; btn.textContent='Send my note to Melissa';
+        btn.disabled=false; btn.textContent='Request the guide';
         status.className='form-status err';
-        status.innerHTML='Something went wrong sending your note. Please try again, or call me at <a href="tel:+18604804169">860.480.4169</a>.';
+        status.innerHTML='Something went wrong sending your request. Please try again, or call me at <a href="tel:+18604804169">860.480.4169</a>.';
       });
   });
 })();
