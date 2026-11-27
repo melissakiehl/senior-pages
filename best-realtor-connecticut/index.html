@@ -29,7 +29,7 @@
 
 <link rel="preload" href="fonts/playfair.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="fonts/arimo.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="images/melissa-living-room-conversation.jpg" as="image">
+<link rel="preload" href="images/ct-house-band.jpg" as="image">
 
 <script type="application/ld+json">
 {
@@ -141,20 +141,30 @@ section{padding:84px 0}
 .head-call{font-size:18px;color:var(--muted);margin:0}
 .head-call a{font-weight:700;color:var(--accent);text-decoration:none;white-space:nowrap}
 
-/* CENTERED HERO OVER A SAGE BAND + PHOTO CARD */
-.hero{background:var(--sage);padding:72px 0 0;text-align:center;border-bottom:0}
-.hero h1{max-width:18em;margin-left:auto;margin-right:auto}
-.hero .lead{margin-bottom:0}
-.badge{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-size:18px;color:var(--muted);text-decoration:none;justify-content:center}
-.badge .stars{color:var(--accent);letter-spacing:2px;font-size:20px}
-.badge strong{color:var(--ink)}
-.hero-card-wrap{margin-top:48px;display:flex;justify-content:center;position:relative}
-.hero-card{background:#fff;padding:16px 16px 28px;box-shadow:0 22px 50px rgba(44,53,20,.14);width:min(380px,86vw);position:relative;top:48px}
-.hero-card img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 15%}
-.hero-card p{margin:14px 0 0;font-family:var(--label);letter-spacing:.12em;text-transform:uppercase;font-size:14px;color:var(--pine)}
+/* FULL-BLEED PHOTO HERO: Simsbury house, subtle overlay, large serif type */
+.hero{position:relative;isolation:isolate;min-height:min(calc(100vh - 84px),820px);display:flex;align-items:flex-end;padding:0;color:#fff;background:#1a1c14;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 58%;display:block}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(20,22,14,.28) 0%,rgba(20,22,14,.42) 38%,rgba(20,22,14,.82) 100%)}
+.hero .wrap{position:relative;z-index:2;width:100%;padding:80px 24px 64px;text-align:left}
+.hero h1{color:#fff;font-size:clamp(40px,5.8vw,70px);line-height:1.12;font-weight:600;letter-spacing:-.02em;max-width:12.5em;margin:0 0 24px;text-wrap:balance}
+.hero h1 em{color:#fff;font-style:italic;font-weight:500}
+.hero .rule{background:#fff;margin:0 0 26px;width:48px;height:2px;opacity:.9}
+.hero .lead{color:rgba(255,255,255,.92);font-size:clamp(20px,2.05vw,24px);line-height:1.55;max-width:30em;margin:0}
+.hero .cta-row{justify-content:flex-start;margin-top:32px;gap:16px}
+.hero .btn-solid{background:#fff;color:var(--pine-deep);border-color:#fff}
+.hero .btn-solid:hover{background:transparent;color:#fff;border-color:#fff}
+.hero .btn-ghost-light{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.75)}
+.hero .btn-ghost-light:hover{background:rgba(255,255,255,.14);color:#fff;border-color:#fff}
+.hero-trust{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:36px}
+.badge{display:inline-flex;align-items:center;gap:10px;margin:0;font-size:18px;color:rgba(255,255,255,.92);text-decoration:none}
+.badge .stars{color:#fff;letter-spacing:2px;font-size:20px}
+.badge strong{color:#fff}
+.hero-creds{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.hero .hero-creds li{font-family:var(--label);letter-spacing:.12em;font-size:13px;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.65);background:transparent;border-radius:999px;padding:7px 13px}
 
 /* Why as typographic pull-quotes */
-.why{padding-top:120px}
+.why{padding-top:72px}
 .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px 56px;margin-top:20px;text-align:left}
 .why-item h3{font-size:clamp(26px,3vw,34px);font-style:italic;font-weight:600;color:var(--pine);margin-bottom:10px}
 .why-item p{margin:0;color:var(--muted);font-size:20px}
@@ -180,12 +190,10 @@ section{padding:84px 0}
 .note-box{margin-top:36px;background:#fff;border-left:6px solid var(--pine);padding:24px 28px;text-align:left}
 .note-box p{margin:0}
 
-/* Full-width house band */
-.band{position:relative;min-height:340px;display:flex;align-items:center;color:#fff;padding:0;overflow:hidden}
-.band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%}
-.band::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(44,53,20,.88) 0%,rgba(44,53,20,.7) 55%,rgba(44,53,20,.4) 100%)}
-.band .wrap{position:relative;z-index:1;width:100%;padding-top:72px;padding-bottom:72px}
-.band p{font-family:var(--serif);font-size:clamp(28px,3.4vw,40px);line-height:1.25;max-width:18em;margin:0;color:#fff;text-align:left}
+/* Typographic quote band (house photo now lives in the hero) */
+.band{background:var(--pine-deep);color:#fff;padding:72px 0}
+.band .wrap{width:100%}
+.band p{font-family:var(--serif);font-size:clamp(28px,3.4vw,40px);line-height:1.35;max-width:18em;margin:0;color:#fff;text-align:left}
 .band p em{color:#eef0e7;font-style:italic}
 
 /* Reviews: three stacked, full width, forest left bar */
@@ -195,7 +203,7 @@ section{padding:84px 0}
 .review figcaption{font-size:17px;color:var(--muted)}
 .review figcaption strong{color:var(--ink);display:block;font-size:18px}
 
-/* About: text only (portrait already in hero), with a living-room inset on the side */
+/* About: text with Melissa greeting clients at a Connecticut colonial */
 .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;text-align:left}
 .about-grid img{width:100%;aspect-ratio:3/2;object-fit:cover}
 .creds{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 6px;padding:0;list-style:none;justify-content:flex-start}
@@ -239,13 +247,22 @@ section{padding:84px 0}
 @media (max-width:900px){
   .why-grid,.steps,.options,.about-grid,.foot-grid{grid-template-columns:1fr;gap:28px}
   .step,.step:nth-child(odd),.step:nth-child(even){border-right:0;padding-left:0;padding-right:0;grid-template-columns:64px 1fr}
-  .hero-card{top:32px}
-  .why{padding-top:96px}
+  .hero{min-height:min(calc(100vh - 84px),700px)}
+  .hero .wrap{padding:56px 24px 48px}
+  .why{padding-top:64px}
 }
 @media (max-width:640px){
   body{font-size:19px}
   section,.form-band{padding:60px 0}
-  .hero{padding-top:48px}
+  .hero{min-height:0}
+  .hero .wrap{padding:28px 24px 22px}
+  .hero h1{font-size:clamp(32px,8.6vw,42px);margin-bottom:12px}
+  .hero .lead{font-size:19px;line-height:1.45}
+  .hero .cta-row{flex-direction:column;align-items:flex-start;margin-top:20px;gap:10px}
+  .hero .cta-row .btn{width:auto;max-width:100%;min-height:52px;padding:14px 22px;font-size:18px}
+  .hero-trust{margin-top:18px;gap:8px 10px}
+  .hero .hero-creds{gap:6px}
+  .hero .hero-creds li{font-size:12px;padding:5px 9px}
   .lead{font-size:21px}
   .head-call{width:100%}
   .brand img{height:38px}
@@ -255,12 +272,11 @@ section{padding:84px 0}
   .row-3 .field:first-child{grid-column:1 / -1}
   .cta-row{flex-direction:column}
   .cta-row .btn{width:100%}
+  .why{padding-top:56px}
 }
 @media print{.site-head,.lead-form,.band{display:none}}
 .form-status a{color:inherit;font-weight:700}
 :focus-visible{box-shadow:0 0 0 3px #fff}
-/* photos of Melissa replace the old portrait styling */
-.hero-card img{object-position:center 12%}
 </style>
 </head>
 <body>
@@ -278,25 +294,26 @@ section{padding:84px 0}
 
 <main id="main">
 
-<section class="hero" id="top">
+<section class="hero" id="top" aria-labelledby="hero-h">
+  <div class="hero-bg">
+    <img src="images/ct-house-band.jpg" width="2000" height="900" alt="A white historic house with a red door and black shutters in Simsbury, Connecticut" fetchpriority="high">
+  </div>
   <div class="wrap">
-    <p class="eyebrow">A fit, not a slogan</p>
-    <h1>The <em>best realtor</em> in Connecticut is the one who is honest with you — even if that means not selling.</h1>
+    <h1 id="hero-h">The <em>best realtor</em> in Connecticut is the one who is honest with you — even if that means not selling.</h1>
     <hr class="rule">
     <p class="lead">“Best” isn’t a crown. It’s a fit. For a family making a careful move, that usually means a steady person who will walk the house with you, tell you the truth about the numbers, and still be there on unpacking day.</p>
     <div class="cta-row">
       <a class="btn btn-solid" href="#talk">Start with a quiet conversation</a>
-      <a class="btn btn-ghost" href="#how">See how we would work</a>
+      <a class="btn btn-ghost-light" href="#how">See how we would work</a>
     </div>
-    <a class="badge" href="https://reviewmk.com/" target="_blank" rel="noopener">
-      <span class="stars" aria-hidden="true">★★★★★</span>
-      <span><strong>5.0</strong> from 101 Google reviews</span>
-    </a>
-    <div class="hero-card-wrap">
-      <figure class="hero-card">
-        <img src="images/melissa-living-room-conversation.jpg" width="864" height="1152" alt="Melissa Kiehl talking through next steps with a client in a living room" fetchpriority="high">
-        <p>Melissa Kiehl, REALTOR®, SRES®</p>
-      </figure>
+    <div class="hero-trust">
+      <a class="badge" href="https://reviewmk.com/" target="_blank" rel="noopener">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <span><strong>5.0</strong> from 101 Google reviews</span>
+      </a>
+      <ul class="creds hero-creds" aria-label="Designations">
+        <li>REALTOR®</li><li>SRES®</li><li>PSA</li><li aria-label="National Association of REALTORS®" title="National Association of REALTORS®">NAR</li><li aria-label="Greater Hartford Association of REALTORS®" title="Greater Hartford Association of REALTORS®">GHAR</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -355,8 +372,7 @@ section{padding:84px 0}
   </div>
 </section>
 
-<div class="band" role="img" aria-label="A white historic house with a red door and black shutters in Simsbury, Connecticut">
-  <img src="images/ct-house-band.jpg" width="2000" height="900" alt="" loading="lazy">
+<div class="band">
   <div class="wrap"><p>The best help is often quiet: a clear plan, a true number, and <em>someone who stays through the last box</em>.</p></div>
 </div>
 
@@ -395,7 +411,7 @@ section{padding:84px 0}
       <p>I’m a REALTOR® with Keller Williams Legacy Partners, based in West Hartford and working with families across Connecticut. Much of that work comes through referrals, which is how I’d like it to stay.</p>
       <p>I hold the Seniors Real Estate Specialist® (SRES®) and PSA designations. The heart of it is simpler: I try to tell the truth, keep everyone informed, and personally coordinate the outreach, the auction or cleanout, and the unpacking at the new place.</p>
       <ul class="creds" aria-label="Designations">
-        <li>REALTOR®</li><li>SRES®</li><li>PSA</li><li>KW Legacy Partners</li>
+        <li>REALTOR®</li><li>SRES®</li><li>PSA</li><li aria-label="National Association of REALTORS®" title="National Association of REALTORS®">NAR</li><li aria-label="Greater Hartford Association of REALTORS®" title="Greater Hartford Association of REALTORS®">GHAR</li>
       </ul>
     </div>
     <img src="images/melissa-colonial-front-door.jpg" width="1024" height="768" alt="Melissa Kiehl greeting a couple at the front door of a white Connecticut colonial" loading="lazy">
