@@ -14,6 +14,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- Google Ads. Conversion is recorded on the thank-you page. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16585816131"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-16585816131');
+</script>
+
 <!-- PAGE-SPECIFIC: SEO -->
 <title>Downsizing Realtor in Connecticut | Melissa Kiehl, SRES® | KW Legacy Partners</title>
 <meta name="description" content="A Connecticut downsizing realtor who helps with the whole move: the decision, sorting, cleanout, auction, sale and unpacking at your new place. Calm, honest guidance from Melissa Kiehl, SRES®.">
@@ -593,7 +602,7 @@ section{padding:88px 0}
     var found={}, has=false, i, k, v, params;
     try{ params=new URLSearchParams(window.location.search); }catch(err){ params=null; }
     if(params){
-      for(i=0;i<TRACK_KEYS.length;i++){
+      for(i=0;TRACK_KEYS.length>i;i++){
         k=TRACK_KEYS[i]; v=params.get(k);
         if(v){ found[k]=v; has=true; }
       }
@@ -606,7 +615,7 @@ section{padding:88px 0}
       var raw=sessionStorage.getItem(STORE_KEY);
       if(raw){
         var parsed=JSON.parse(raw);
-        if(parsed && typeof parsed==='object') return parsed;
+        if(parsed){if(typeof parsed==='object') return parsed;}
       }
     }catch(err){}
     return {};
@@ -615,9 +624,9 @@ section{padding:88px 0}
   function mergeTracking(url, tracking){
     var u, i, k;
     try{ u=new URL(url, window.location.href); }catch(err){ return url; }
-    for(i=0;i<TRACK_KEYS.length;i++){
+    for(i=0;TRACK_KEYS.length>i;i++){
       k=TRACK_KEYS[i];
-      if(tracking[k] && !u.searchParams.get(k)) u.searchParams.set(k, tracking[k]);
+      if(tracking[k]){if(!u.searchParams.get(k)) u.searchParams.set(k, tracking[k]);}
     }
     return u.href;
   }
@@ -625,7 +634,7 @@ section{padding:88px 0}
   function thankYouUrl(tracking){
     var dest=new URL('./thank-you/', window.location.href);
     var i, k;
-    for(i=0;i<TRACK_KEYS.length;i++){
+    for(i=0;TRACK_KEYS.length>i;i++){
       k=TRACK_KEYS[i];
       if(tracking[k]) dest.searchParams.set(k, tracking[k]);
     }
